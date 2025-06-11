@@ -75,13 +75,20 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
       return Container(
         height: 200,
         decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
-        child: const Center(
+        child: Center(
           child: Text(
             'No GPS data available',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.grey.shade600),
           ),
         ),
       );
@@ -95,9 +102,16 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: Colors.grey[900],
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.blue, width: 1),
+        border: Border.all(color: Colors.blue.shade300, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade300,
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: CustomPaint(
         painter: RoutePainter(_gpsPoints, minLat, maxLat, minLng, maxLng),
@@ -111,13 +125,20 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
       return Container(
         height: 150,
         decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
-        child: const Center(
+        child: Center(
           child: Text(
             'No accelerometer data available',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.grey.shade600),
           ),
         ),
       );
@@ -126,9 +147,16 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
     return Container(
       height: 150,
       decoration: BoxDecoration(
-        color: Colors.grey[900],
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.green, width: 1),
+        border: Border.all(color: Colors.green.shade300, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade300,
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: CustomPaint(
         painter: AccelerometerChartPainter(_accelerometerData),
@@ -140,31 +168,40 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return const Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(child: CircularProgressIndicator(color: Colors.green)),
+      return Scaffold(
+        backgroundColor: Colors.grey.shade50,
+        body: Center(
+          child: CircularProgressIndicator(color: Colors.blue.shade600),
+        ),
       );
     }
 
     if (_activity == null) {
-      return const Scaffold(
-        backgroundColor: Colors.black,
+      return Scaffold(
+        backgroundColor: Colors.grey.shade50,
         body: Center(
           child: Text(
             'Activity not found',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.grey.shade700),
           ),
         ),
       );
     }
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-        title: const Text('Activity Details'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.grey.shade800,
+        title: Text(
+          'Activity Details',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade800,
+          ),
+        ),
         elevation: 0,
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -177,15 +214,22 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.grey[900],
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Column(
                       children: [
                         Text(
                           _activity!.distance.toStringAsFixed(2),
-                          style: const TextStyle(
-                            color: Colors.blue,
+                          style: TextStyle(
+                            color: Colors.blue.shade600,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -193,7 +237,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                         Text(
                           'Distance (km)',
                           style: TextStyle(
-                            color: Colors.grey[400],
+                            color: Colors.grey.shade600,
                             fontSize: 12,
                           ),
                         ),
@@ -206,15 +250,22 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.grey[900],
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Column(
                       children: [
                         Text(
                           _formatDuration(_activity!.duration),
-                          style: const TextStyle(
-                            color: Colors.green,
+                          style: TextStyle(
+                            color: Colors.green.shade600,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -222,7 +273,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                         Text(
                           'Duration',
                           style: TextStyle(
-                            color: Colors.grey[400],
+                            color: Colors.grey.shade600,
                             fontSize: 12,
                           ),
                         ),
@@ -235,15 +286,22 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.grey[900],
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Column(
                       children: [
                         Text(
                           _activity!.averagePace?.toStringAsFixed(1) ?? '0.0',
-                          style: const TextStyle(
-                            color: Colors.purple,
+                          style: TextStyle(
+                            color: Colors.purple.shade600,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -251,7 +309,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                         Text(
                           'Avg Pace',
                           style: TextStyle(
-                            color: Colors.grey[400],
+                            color: Colors.grey.shade600,
                             fontSize: 12,
                           ),
                         ),
@@ -265,7 +323,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
             Text(
               'GPS Route',
               style: TextStyle(
-                color: Colors.grey[300],
+                color: Colors.grey.shade800,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -276,7 +334,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
             Text(
               'Motion Analysis',
               style: TextStyle(
-                color: Colors.grey[300],
+                color: Colors.grey.shade800,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -288,8 +346,15 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey[900],
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade300,
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -297,7 +362,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                   Text(
                     'Activity Summary',
                     style: TextStyle(
-                      color: Colors.grey[300],
+                      color: Colors.grey.shade800,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -306,10 +371,16 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Type:', style: TextStyle(color: Colors.grey[400])),
+                      Text(
+                        'Type:',
+                        style: TextStyle(color: Colors.grey.shade600),
+                      ),
                       Text(
                         _activity!.activityType.toUpperCase(),
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
@@ -319,11 +390,14 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                     children: [
                       Text(
                         'GPS Points:',
-                        style: TextStyle(color: Colors.grey[400]),
+                        style: TextStyle(color: Colors.grey.shade600),
                       ),
                       Text(
                         '${_gpsPoints.length}',
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
@@ -333,11 +407,14 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                     children: [
                       Text(
                         'Motion Data:',
-                        style: TextStyle(color: Colors.grey[400]),
+                        style: TextStyle(color: Colors.grey.shade600),
                       ),
                       Text(
                         '${_accelerometerData.length} samples',
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
@@ -347,13 +424,16 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                     children: [
                       Text(
                         'Start Time:',
-                        style: TextStyle(color: Colors.grey[400]),
+                        style: TextStyle(color: Colors.grey.shade600),
                       ),
                       Text(
                         DateTime.parse(
                           _activity!.startTime,
                         ).toString().substring(0, 16),
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),

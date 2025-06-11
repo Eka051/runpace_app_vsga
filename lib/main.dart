@@ -23,6 +23,25 @@ class Runpace extends StatelessWidget {
       create: (context) => AppAuth(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'RunPace',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.grey.shade50,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.grey.shade800,
+            elevation: 0,
+            centerTitle: true,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+        ),
         home: const LoginView(),
         routes: {
           '/login': (context) => const LoginView(),
